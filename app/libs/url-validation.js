@@ -3,21 +3,21 @@ export async function urlValidation(url) {
     return false;
   }
 
-  const checkAvailable = await checkUrlAvailability(url);
-  if (checkAvailable == false) {
-    return false;
-  }
+  // const checkAvailable = await checkUrlAvailability(url);
+  // if (checkAvailable == false) {
+  //   return false;
+  // }
 
   return true;
 }
 
 function isValidUrl(string) {
   try {
-    const newUrl = new URL(string);
-    return newUrl.protocol === "http:" || newUrl.protocol === "https:";
+    new URL(string);
   } catch (err) {
     return false;
   }
+  return true;
 }
 
 async function checkUrlAvailability(url) {

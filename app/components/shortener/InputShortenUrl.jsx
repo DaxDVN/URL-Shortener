@@ -4,6 +4,7 @@ import { Form } from "@remix-run/react";
 const InputShortenUrl = ({ input, setInput }) => {
   const [value, setValue] = useState("");
   const handleClick = () => {
+    setInput(value);
     setValue("");
   };
 
@@ -19,7 +20,6 @@ const InputShortenUrl = ({ input, setInput }) => {
             placeholder="Paste a link to shorten it"
             value={value}
             onChange={(e) => {
-              setInput(e.target.value);
               setValue(e.target.value);
             }}
           />

@@ -1,6 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import main_style from "./style/main_style.css";
-
 import {
   Links,
   LiveReload,

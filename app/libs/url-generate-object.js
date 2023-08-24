@@ -1,7 +1,7 @@
 import { generateKey } from "../libs/url-generate-key";
 
 export function generateObject(long, uid) {
-  const shortKey = process.env.DOMAIN_NAME + generateKey();
+  const shortKey = generateKey();
   const URL = {
     short: shortKey,
     long: long,

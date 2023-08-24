@@ -1,6 +1,7 @@
 import { useLoaderData } from "@remix-run/react";
-import { findUrl } from "../services/url.server";
 import BackgroundAnimate from "../components/dashboard/BackgroundAnimate";
+import { supabaseClient } from "../libs/db.server";
+import { redirect } from "@remix-run/node";
 export default function RenderLink() {
   try {
     const urlData = useLoaderData();
@@ -19,8 +20,12 @@ export default function RenderLink() {
 
 export async function loader({ params }) {
   try {
-    const urlData = await findUrl(params.key);
-    return urlData.long;
+    const { data } = await supabaseClient
+      .from("url")
+      .select()
+      .eq("short", params.key);
+    const link = data[0].long;
+    return redirect(link);
   } catch (error) {}
   return null;
 }
